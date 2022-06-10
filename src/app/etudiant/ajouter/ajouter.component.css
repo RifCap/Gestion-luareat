@@ -1,0 +1,108 @@
+body{
+    margin-top:20px;
+    background: #cccaca;
+}
+
+.navbar {
+    position:relative;
+    margin-bottom: 40px;
+}
+
+.w-60 {
+    width: 120px;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 10px;
+    font-weight: 600;
+}
+/* .social-links li a {
+    -webkit-border-radius: 50%;
+    background-color: rgba(89,206,181,.85);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    font-size: 12px;
+} */
+a {
+    color: #707070;
+}
+
+.main-container {
+    background-color: rgb(245, 240, 240);
+    perspective: 800px;
+    width:auto;
+    height:auto;
+    padding-left:12px;
+    padding-right:12px;
+}
+
+.col-md-4{
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card {
+    border: none;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+    box-shadow: 1px 1px 2px 5px rgba(0,0,0,.05);
+    margin-bottom: 30px;
+    margin-top: 20px;
+    backface-visibility: hidden;
+    height: auto;
+}
+
+.side-front {
+    transform: rotateY(180deg);
+    max-width: 95%;
+    width:100%;
+    max-height: auto;
+    position: absolute;
+}
+
+.side-back {
+    max-width: 100%;
+    width: 100%;
+    max-height:auto;
+    text-align: center;
+}
+
+.bg-diamond {
+    width: 100%;
+    border:none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 5rem;
+    max-height: auto;
+    opacity: 60%;
+    position: relative;
+}
+
+/* .side-back .card-body {
+    
+} */
+
+.side-back .card-body div {
+    font-size: 18px;
+    font-family: cursive;
+    line-height:4rem;
+}
+
+.fleche-icon {
+    width: 35px;
+    margin-left:10px;
+    margin-right: 10vw;
+    cursor: pointer;
+}
+
+.btn-group {
+    position: relative;
+    height:35px;
+}
+
+.email-phone {
+    color: rgb(101, 101, 212);
+}
