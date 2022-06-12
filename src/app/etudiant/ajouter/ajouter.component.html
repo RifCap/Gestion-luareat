@@ -4,15 +4,18 @@
    <!-- navbar aykon fiha search hnaya-->
    
 
-   <nav class="navbar navbar-expand-lg ">
+   <nav class="navbar navbar-expand-lg " >
+         <div class="container-ajouetr">
+            <button (click)="onOpenModal(null, 'add')" class="btn-ajouter">Ajouter</button>
+         </div>
         <form class="absolute inset-y-0 right-0 w-62 top-2 right-2">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input (ngModelChange)="searchEmployee(key.value)" class="form-control mr-sm-2" #key="ngModel" ngModel name="key" type="Search" placeholder="Search etudiant..." aria-label="Search" required>
         </form>    
       
    </nav>
 
 
-    <div class="row main-container">
+    <div class="row main-container" id="main-container">
         <div *ngFor="let etd of etudiant; let idx=index" [@cardFlip]="etd.state" class="col-md-4 col-xl-4">
             
             <!-- front -->
@@ -35,8 +38,8 @@
                      <li class="list-inline-item"><img src="./assets/Fleche-icon.png" alt="" class="fleche-icon" (click)="cardClicked(idx)"></li>
                 </div>
                 <div class="float-right btn-group btn-group-sm">
-                    <a class="btn btn-primary tooltips text-white" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                    <a class="btn btn-secondary tooltips text-white" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    <a (click)="onOpenModal(etd, 'edit')" class="btn btn-primary tooltips text-white" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                    <a (click)="onOpenModal(etd, 'delete')" class="btn btn-secondary tooltips text-white" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>
             </div>
            </div>
@@ -81,29 +84,37 @@
              <div class="modal-body">
                 <form #addForm="ngForm" >            
                 <div class="form-group">
-                   <label for="firstname">Firstname</label>
-                   <input type="text" ngModel name="firstname" class="form-control" id="firstname" placeholder="Firstname" required>
+                   <label for="nom">Nom</label>
+                   <input type="text" ngModel name="nom" class="form-control" id="om" placeholder="Nom" required>
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Lastname</label>
-                    <input type="text" ngModel name="lastname" class="form-control" id="lastname" placeholder="Lastname" required>
+                    <label for="prenom">Prénom</label>
+                    <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
                  </div>
                 <div class="form-group">
-                   <label for="email">Email Address</label>
+                   <label for="email">Email</label>
                    <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                   <label for="jobtilte">Job title</label>
-                   <input type="text" ngModel name="jobtitle" class="form-control" id="jobtitle" placeholder="Job title" required>
+                   <label for="tele">N° telephone</label>
+                   <input type="text" ngModel name="tele" class="form-control" id="tele" placeholder="Numéro de telephone" required>
                 </div>
                 <div class="form-group">
                     <label for="image">Image URL</label>
                     <input type="text" ngModel name="image" class="form-control" id="image" placeholder="Image URL" required>
                  </div>
                 <div class="form-group">
-                   <label for="tele">Phone</label>
-                   <input type="text" ngModel name="tele" class="form-control" id="tele" placeholder="Phone" required>
+                   <label for="date">Date naissance</label>
+                   <input type="date" ngModel name="date" class="form-control" id="date" placeholder="Date naissance" required>
                 </div>
+                <div class="form-group">
+                  <label for="annee">Annee université</label>
+                  <input type="text" ngModel name="annee" class="form-control" id="annee" placeholder="Annee université" required>
+               </div>
+               <div class="form-group">
+                  <label for="niveau">Niveau scolaire</label>
+                  <input type="text" ngModel name="niveau" class="form-control" id="niveau" placeholder="Niveau scolaire" required>
+               </div>
     
                 
                 <div class="modal-footer">
@@ -129,30 +140,38 @@
               <div class="modal-body">
                 <form #editForm="ngForm">
                     <input type="hidden" name="id" class="form-control" id="id" placeholder="ID">
-                <div class="form-group">
-                   <label for="firstname">Firstname</label>
-                   <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Firstname" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Lastname</label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Lastname" required>
+                    <div class="form-group">
+                     <label for="nom">Nom</label>
+                     <input type="text" ngModel name="nom" class="form-control" id="om" placeholder="Nom" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="prenom">Prénom</label>
+                      <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
+                   </div>
+                  <div class="form-group">
+                     <label for="email">Email</label>
+                     <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="tele">N° telephone</label>
+                     <input type="text" ngModel name="tele" class="form-control" id="tele" placeholder="Numéro de telephone" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="image">Image URL</label>
+                      <input type="text" ngModel name="image" class="form-control" id="image" placeholder="Image URL" required>
+                   </div>
+                  <div class="form-group">
+                     <label for="date">Date naissance</label>
+                     <input type="date" ngModel name="date" class="form-control" id="date" placeholder="Date naissance" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="annee">Annee université</label>
+                    <input type="text" ngModel name="annee" class="form-control" id="annee" placeholder="Annee université" required>
                  </div>
-                <div class="form-group">
-                   <label for="email">Email Address</label>
-                   <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                   <label for="jobtilte">Job title</label>
-                   <input type="text" name="jobtitle" class="form-control" id="jobtitle" placeholder="Job title" required>
-                </div>
-                <div class="form-group">
-                    <label for="image">Image URL</label>
-                    <input type="text" name="image" class="form-control" id="image" placeholder="Image URL" required>
+                 <div class="form-group">
+                    <label for="niveau">Niveau scolaire</label>
+                    <input type="text" ngModel name="niveau" class="form-control" id="niveau" placeholder="Niveau scolaire" required>
                  </div>
-                <div class="form-group">
-                   <label for="tele">Phone</label>
-                   <input type="text" name="tele" class="form-control" id="tele" placeholder="Phone" required>
-                </div>
     
                 
                 <div class="modal-footer">
